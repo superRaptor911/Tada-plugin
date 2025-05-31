@@ -1,6 +1,6 @@
 import Showdown from "showdown";
 import "./popup.css";
-import { initUiElements, markIsFetching } from "./popup/ui";
+import { initUiElements, markIsFetching } from "./ui";
 
 let isFetching = false;
 

@@ -5,10 +5,10 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        popup: 'src/popup.html',
+        popup: 'src/popup/popup.html',
         background: 'src/background.ts',
-        content: 'src/content.ts',
-        popupScript: 'src/popup.ts',
+        content: 'src/content/content.ts',
+        // popupScript: 'src/popup/popup.ts',
       },
       output: {
         entryFileNames: '[name].js',
