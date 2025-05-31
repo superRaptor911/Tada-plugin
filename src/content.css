@@ -1,0 +1,42 @@
+
+.root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    overflow: auto;
+    padding: 20px;
+    color: #000;
+}
+
+.root h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.root h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.root p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+.root a {
+    color: #007bff;
+    text-decoration: none;
+}
+.root a:hover {
+    text-decoration: underline;
+}
+.root .close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
