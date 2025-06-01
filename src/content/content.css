@@ -42,7 +42,6 @@
 
 #text-selection-popup {
   position: absolute;
-  margin-left: 20px;
   width: 64px;
   height: 64px;
   z-index: 10000; /* Ensure it appears above other content */
