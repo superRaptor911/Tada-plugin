@@ -1,4 +1,4 @@
-import { PluginMessageEvent } from "../../types";
+import { PluginMessageEvent } from "../types";
 
 export class ModuleBase {
     private _name: string;
