@@ -8,3 +8,4 @@ cp manifest.json dist/
 # cp -r src/*.html dist/
 cp -r src/content/content.css dist/
 cp icon.png dist/
+cp -r src/assets dist/

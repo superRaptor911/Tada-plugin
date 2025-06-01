@@ -1,5 +1,5 @@
-import { EVENT_CAPTURE_PAGE_SUMMARY, EVENT_FULL_PAGE_HTML_CONTENT, EVENT_FULL_PAGE_TEXT } from "../../contants";
-import { PluginMessageEvent } from "../../types";
+import { EVENTS } from "../contants";
+import { PluginMessageEvent } from "../types";
 import { ModuleBase } from "./ModuleBase";
 
 export class PageSummary extends ModuleBase {
@@ -15,14 +15,14 @@ export class PageSummary extends ModuleBase {
     }
 
     handleMessageEvent(event: PluginMessageEvent): boolean {
-        if (event.type === EVENT_CAPTURE_PAGE_SUMMARY) {
+        if (event.type === EVENTS.EVENT_CAPTURE_PAGE_SUMMARY) {
             const text = document.body.innerText || "";
             this.sendMessageEvent("POPUP", {
-                type: EVENT_FULL_PAGE_TEXT,
+                type: EVENTS.EVENT_FULL_PAGE_TEXT,
                 payload: text
             });
             return true;
-        } else if (event.type === EVENT_FULL_PAGE_HTML_CONTENT) {
+        } else if (event.type === EVENTS.EVENT_FULL_PAGE_HTML_CONTENT) {
             const htmlContent = event.payload || "";
             this.renderHTMLContent(htmlContent);
             return true;
