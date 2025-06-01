@@ -1,6 +1,11 @@
 import Showdown from "showdown";
 import "./popup.css";
 import { initUiElements, markIsFetching } from "./ui";
+import {
+  EVENT_CAPTURE_PAGE_SUMMARY,
+  EVENT_FULL_PAGE_HTML_CONTENT,
+  EVENT_FULL_PAGE_TEXT,
+} from "../contants";
 
 let isFetching = false;
 
@@ -19,17 +24,15 @@ async function msg_getPageTextContent() {
 
   if (tab.id) {
     chrome.tabs.sendMessage(tab.id, {
-      type: "RUN",
+      type: EVENT_CAPTURE_PAGE_SUMMARY,
       payload: {},
     });
   }
 }
 
-
-
 // Listen for message from content script
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-  if (message.type === "PAGE_TEXT") {
+  if (message.type === EVENT_FULL_PAGE_TEXT) {
     if (isFetching) {
       console.warn("Already fetching content, ignoring this request.");
       return;
@@ -58,15 +61,12 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     // send message back to content script
     if (sender.tab && sender.tab.id) {
       chrome.tabs.sendMessage(sender.tab.id, {
-        type: "HTML_CONTENT",
+        type: EVENT_FULL_PAGE_HTML_CONTENT,
         payload: htmlContent,
       });
     }
   }
 });
-
-
-
 
 // Trigger on popup lo
 document.addEventListener("DOMContentLoaded", () => {
