@@ -7,8 +7,7 @@ export default defineConfig({
       input: {
         popup: 'src/popup/popup.html',
         background: 'src/background.ts',
-        content: 'src/content/content.ts',
-        // popupScript: 'src/popup/popup.ts',
+        // content: 'src/content/content.ts',
       },
       output: {
         entryFileNames: '[name].js',
