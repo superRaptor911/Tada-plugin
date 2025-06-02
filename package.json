@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@types/showdown": "^2.0.6",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "uuid": "^11.1.0"
   }
 }
