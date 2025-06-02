@@ -1,4 +1,5 @@
 import { EVENTS } from "../../contants";
+import { generateUniqueId } from "../../utils";
 import { ModuleBase } from "../ModuleBase";
 import { getSelectionRect } from "./helpers";
 
@@ -60,7 +61,6 @@ export class TextSelectionSummary extends ModuleBase {
   }
 
   private handleSelectionChange(event: Event) {
-    console.log("Selection changed", event);
     const selection = window.getSelection();
     if (selection && selection.toString().trim().length > 100) {
       // console.log("Selected text:", selectedText);
@@ -89,11 +89,15 @@ export class TextSelectionSummary extends ModuleBase {
       const selection = window.getSelection();
       const selectedText = selection?.toString() ?? "";
 
+      const selectionId = generateUniqueId();
+
       if (selectedText) {
-        this.sendMessageEvent("POPUP", {
-          type: EVENTS.EVENT_FULL_PAGE_TEXT,
-          payload: selectedText,
-        });
+        this.sendMessageEvent(EVENTS.EVENT_TEXT_SELECTION_REQUEST,
+          {
+            selectionId: selectionId,
+            text: selectedText,
+          }
+        );
       }
     } catch (error) {
       console.error("Error fetching summary:", error);

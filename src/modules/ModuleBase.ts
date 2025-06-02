@@ -1,3 +1,4 @@
+import { EventName, EventObject, EventPayloadMap } from "../contants";
 import { PluginMessageEvent } from "../types";
 
 export class ModuleBase {
@@ -34,22 +35,16 @@ export class ModuleBase {
         console.log("Module destroyed");
     }
 
-    handleMessageEvent(event: PluginMessageEvent) : boolean{
+    handleMessageEvent(event: EventObject) : boolean{
         return false; // Return true if the event was handled, false otherwise
     }
 
-    sendMessageEvent(to: "POPUP" | "CONTENT" | "BACKGROUND", event: PluginMessageEvent) {
-        if (to === "POPUP") {
-            chrome.runtime.sendMessage(event);
-        } else if (to === "CONTENT") {
-            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                if (tabs[0] && tabs[0].id) {
-                    chrome.tabs.sendMessage(tabs[0].id, event);
-                }
-            });
-            // have to check this
-        } else if (to === "BACKGROUND") {
-            chrome.runtime.sendMessage(event);
-        }
+    sendMessageEvent<T extends EventName>(event: T, payload: EventPayloadMap[T]) {
+        const data: PluginMessageEvent = {
+            type: event,
+            payload: payload
+        };
+        
+        chrome.runtime.sendMessage(event);
     }
 }

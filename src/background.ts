@@ -1,12 +1,12 @@
 import Showdown from "showdown";
-import { EVENTS } from "./contants";
+import { EventObject, EVENTS } from "./contants";
 
 let isFetching = false;
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension installed.");
 });
 
-chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (message : EventObject, sender, sendResponse) => {
   if (message.type === EVENTS.EVENT_FULL_PAGE_TEXT) {
     if (isFetching) {
       console.warn("Already fetching content, ignoring this request.");
