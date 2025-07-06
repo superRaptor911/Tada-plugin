@@ -1,6 +1,8 @@
 import { EVENTS } from "../contants";
 import { PluginMessageEvent } from "../types";
 import { ModuleBase } from "./ModuleBase";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 export class PageSummary extends ModuleBase {
     constructor() {
@@ -8,6 +10,7 @@ export class PageSummary extends ModuleBase {
     }
 
     init() {
+
     }
 
     destroy() {
