@@ -23,6 +23,8 @@ export class TextSelectionSummary extends ModuleBase {
   }
 
   init() {
+
+
     document.addEventListener(
       "selectionchange",
       this.handleSelectionChange.bind(this)
